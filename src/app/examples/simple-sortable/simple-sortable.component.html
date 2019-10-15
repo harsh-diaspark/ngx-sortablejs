@@ -41,9 +41,15 @@ Actually everything can be sortable. -->
 
 <div class="container">
   <div class="row">
-    <div class="col-sm">
-      One of three columns
-    </div>
+      <div class="col-sm h-100 row align-items-center ">
+          <div class="card" style="width: 18rem;margin-top: 200px;color: grey;">
+            <div class="card-body" style="background-color: beige;">
+              <!-- <h5 class="card-title">Card title</h5> -->
+              <h6 class="card-subtitle mb-2 text-muted">`<h1 style="color: darkcyan;">Counts: 16</h1>`</h6>
+              <!-- <p class="card-text text-primary">16</p>  -->
+            </div>
+          </div>
+        </div>
     <div class="col-sm">
       <div class="nav nav-pills mb-3 " [sortablejs]="cities" [sortablejsOptions]="options"
         [sortablejsCloneFunction]="myCloneImplementation">
@@ -58,22 +64,41 @@ Actually everything can be sortable. -->
           </ul>
         </ul>
       </div>
+      <br>
       <div class="nav nav-pills mb-3" [sortablejs]="countries" [sortablejsOptions]="options"
-    [sortablejsCloneFunction]="myCloneImplementation">
-    <ul *ngFor="let city of countries" class="list-group"> 
-        <h4>List Of People In U.K.</h4>
-      <ul class="list-group">
-        <li class="card" *ngFor="let people of city.people" class="list-group-item"> 
-          <div class="card-header"> {{people.name}} </div>
-        </li>
-      </ul>
-    </ul>
-  </div>
+        [sortablejsCloneFunction]="myCloneImplementation">
+        <ul *ngFor="let city of countries" class="list-group">
+          <h4>List Of People In U.K.</h4>
+          <ul class="list-group">
+            <li class="card" *ngFor="let people of city.people" class="list-group-item">
+              <div class="card-header"> {{people.name}} </div>
+            </li>
+          </ul>
+        </ul>
+      </div>
     </div>
 
+
+
+    <!-- //////////Third Column/////////// -->
     <div class="col-sm">
-      One of three columns
+
+      <div class="nav nav-pills mb-3 " [sortablejs]=" images" [sortablejsOptions]="options"
+        [sortablejsCloneFunction]="myCloneImplementation">
+        <div class="card" style="width: 378px;"*ngFor="let image of images" >
+          <img class="card-body" style="width: 378px;" src="{{image}}">
+        </div>
+      </div>
+      <br><br>
+      <!-- <div class="nav nav-pills mb-3" [sortablejs]=" image2" [sortablejsOptions]="options"
+        [sortablejsCloneFunction]="myCloneImplementation">
+        <div class="card" style="width: 378px;">
+          <img src="{{image2}}" class="card-body" style="width: 378px; ">
+        </div>
+      </div> -->
+
     </div>
+
   </div>
 </div>
 
@@ -96,11 +121,12 @@ Actually everything can be sortable. -->
 
 
 
-<div>
-  <br>
+
+  <div>
+    <br>
 
 
-  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="Block1" [sortablejsOptions]="options"
+    <!-- <div class="nav nav-pills mb-3 " [sortablejs]="Block1" [sortablejsOptions]="options"
     [sortablejsCloneFunction]="myCloneImplementation">
         <ul>
             <li *ngFor="let block of Block1">
@@ -109,10 +135,10 @@ Actually everything can be sortable. -->
         </ul>
     </div> -->
 
-  <br>
+    <br>
 
-  <br>
-  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="list3" [sortablejsOptions]="options"
+    <br>
+    <!-- <div class="nav nav-pills mb-3 " [sortablejs]="list3" [sortablejsOptions]="options"
     [sortablejsCloneFunction]="myCloneImplementation">
     <div class="nav-item" *ngFor="let city of list3">
       <a class="nav-link active mr-1">{{ city }}</a>
@@ -121,18 +147,18 @@ Actually everything can be sortable. -->
 
   </div> -->
 
-</div>
+  </div>
 
 
 
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- <nav aria-label="breadcrumb" role="navigation">
+  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!-- <nav aria-label="breadcrumb" role="navigation">
   <ol class="breadcrumb" [sortablejs]="cities">
     <li class="breadcrumb-item active" *ngFor="let city of cities">{{ city }}</li>
   </ol>
 </nav> -->
 
-<!-- <h2 class="mt-4 mb-3">The actual model</h2>
+  <!-- <h2 class="mt-4 mb-3">The actual model</h2>
 
 <div class="alert alert-dark">
   > {{ cities | json }}

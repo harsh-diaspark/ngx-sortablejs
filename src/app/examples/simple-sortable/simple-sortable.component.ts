@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { SortablejsOptions } from 'ngx-sortablejs';
+
 @Component({
   selector: 'app-simple-sortable',
   templateUrl: './simple-sortable.component.html',
   styleUrls: ['./simple-sortable.component.css'],
 })
 export class SimpleSortableComponent {
-//   Block1=[
-// 'abc',
-// 'kjefw'
-//   ];
-//   Block2=[
-//     'abc',
-//     'kjefw'
-//       ]
+
+  image1= '/assets/img1.png';
+  image2='/assets/img2.png'
+
+  
   cities = [
     {
      
@@ -33,6 +31,10 @@ export class SimpleSortableComponent {
       ]
     }
   ];
+  images = [
+    this.image1,
+    this.image2
+  ]
 
   countries = [
  
@@ -69,5 +71,7 @@ export class SimpleSortableComponent {
   myCloneImplementation = (city) => {
     return city; // this is what happens if sortablejsCloneFunction is not provided. Add your stuff here
   }
+
+  
 
 }

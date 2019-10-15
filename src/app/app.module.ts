@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { ExamplesModule } from './examples/examples.module';
 import { MultipleListsComponent } from './examples/multiple-lists/multiple-lists.component';
 import { SortablejsOptions } from 'ngx-sortablejs';
-
 import { SimpleSortableComponent } from './examples/simple-sortable/simple-sortable.component';
 import { SortableFormArrayComponent } from './examples/sortable-form-array/sortable-form-array.component';
 import { SortableWithOptionsComponent } from './examples/sortable-with-options/sortable-with-options.component';
@@ -20,7 +19,6 @@ import { TestCasesModule } from './test-cases/test-cases.module';
   ],
   imports: [
     BrowserModule,
-  
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'sortable-array' },
       {
