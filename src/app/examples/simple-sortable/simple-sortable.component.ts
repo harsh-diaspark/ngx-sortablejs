@@ -21,9 +21,10 @@ export class SimpleSortableComponent {
           "name": "Douglas  Pace"
         },
         {
-          "name": "Mcleod  Mueller"
-        },{
-          "name": "Douglas  Pace"
+          "name": "Robert Downry Jr."
+        },
+        {
+          "name": "Chris  Hemsworth"
         },
         {
           "name": "Mcleod  Mueller"
@@ -41,28 +42,29 @@ export class SimpleSortableComponent {
     {
       'people': [
         {
-          "name": "Akshita"
+          "name": "Akshita  Panchal"
         },
         {
-          "name": "Harsh"
+          "name": "Harsh Khare"
         },
         {
-          "name": "Karanjot"
+          "name": "Karanjot  Singh"
         },
         {
-          "name": "Siddharth"
+          "name": "Siddharth  Sharma"
         }
       ]
     }
   ]
 
-  list3 =[
-    'Block 11',
-    'Block 12',
-    'Block 13',
-    'Block 14',
-    'Block 15'
-  ]
+  items =[
+      {
+        'count':'Count1'
+      },
+      {
+        'pic':this.image1
+      }
+   ]
   
   options: SortablejsOptions = {
     group: 'test'

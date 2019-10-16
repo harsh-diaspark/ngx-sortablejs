@@ -1,105 +1,77 @@
-<!-- <h1>Sortable Array</h1>
-
-<p class="lead">
-  <strong> -->
-<!-- <a href="https://github.com/SortableJS/ngx-sortablejs/tree/master/src/app/examples/simple-sortable"
-      target="_blank">The source code</a> -->
-<!-- </strong>
-</p>
-
-The examples below shows various bootstrap.css elements that can be <em>sortable</em>.
-
-They share the same model that's why every time you drag / drop the element all others get updated.
-
-Actually everything can be sortable. -->
-
-<!-- <h2 class="mt-4 mb-3">Button groups</h2>
-
-<div class="clearfix">
-  <div class="btn-group-vertical float-left" [sortablejs]="cities">
-    <button type="button" class="btn btn-secondary" *ngFor="let city of cities">{{ city }}</button>
-  </div>
-
-  <div class="btn-group ml-3" [sortablejs]="cities">
-    <button type="button" class="btn btn-secondary" *ngFor="let city of cities">{{ city }}</button>
-  </div>
-</div>
-
-<h2 class="mt-4 mb-3">Cards</h2>
-
-<div class="row" [sortablejs]="cities">
-  <div class="col-sm-4 my-3" *ngFor="let city of cities">
-    <div class="card">
-      <div class="card-header">{{ city }}</div>
-      <div class="card-body">{{ city }} description</div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <h2 class="mt-4 mb-3">Navigation</h2> -->
-
-
 <div class="container">
   <div class="row">
-      <div class="col-sm h-100 row align-items-center ">
-          <div class="card" style="width: 18rem;margin-top: 200px;color: grey;">
-            <div class="card-body" style="background-color: beige;">
-              <!-- <h5 class="card-title">Card title</h5> -->
-              <h6 class="card-subtitle mb-2 text-muted">`<h1 style="color: darkcyan;">Counts: 16</h1>`</h6>
-              <!-- <p class="card-text text-primary">16</p>  -->
-            </div>
+
+    <!-- //////////////First Column/////////// -->
+
+    <div class="col-sm h-100 row align-items-center ">
+      
+      <div class="sortable" [sortablejs]="items" [sortablejsOptions]="options"
+        [sortablejsCloneFunction]="myCloneImplementation">
+        <div class="card" style="width: 378px;" *ngFor="let people of items">
+            <div class="card-body" style="background-color: beige;"> {{people.count}}</div>
+            <img class="card-body" style="width: 378px;" src="{{people.pic}}">
+
+              
+            <!-- <img class="card-body" style="width: 378px;" src="{{people.pic}}"> -->
           </div>
-        </div>
-    <div class="col-sm">
-      <div class="nav nav-pills mb-3 " [sortablejs]="cities" [sortablejsOptions]="options"
-        [sortablejsCloneFunction]="myCloneImplementation">
 
-
-        <ul *ngFor="let city of cities" class="list-group">
-          <h4>List Of People In U.K. </h4>
-          <ul class="list-group">
-            <li class="card" *ngFor="let people of city.people" class="list-group-item">
-              <div class="card-header"> {{people.name}} </div>
-            </li>
-          </ul>
-        </ul>
       </div>
-      <br>
-      <div class="nav nav-pills mb-3" [sortablejs]="countries" [sortablejsOptions]="options"
-        [sortablejsCloneFunction]="myCloneImplementation">
-        <ul *ngFor="let city of countries" class="list-group">
-          <h4>List Of People In U.K.</h4>
-          <ul class="list-group">
-            <li class="card" *ngFor="let people of city.people" class="list-group-item">
-              <div class="card-header"> {{people.name}} </div>
-            </li>
-          </ul>
-        </ul>
-      </div>
-    </div>
 
 
-
-    <!-- //////////Third Column/////////// -->
-    <div class="col-sm">
-
-      <div class="nav nav-pills mb-3 " [sortablejs]=" images" [sortablejsOptions]="options"
-        [sortablejsCloneFunction]="myCloneImplementation">
-        <div class="card" style="width: 378px;"*ngFor="let image of images" >
-          <img class="card-body" style="width: 378px;" src="{{image}}">
-        </div>
-      </div>
-      <br><br>
-      <!-- <div class="nav nav-pills mb-3" [sortablejs]=" image2" [sortablejsOptions]="options"
-        [sortablejsCloneFunction]="myCloneImplementation">
-        <div class="card" style="width: 378px;">
-          <img src="{{image2}}" class="card-body" style="width: 378px; ">
-        </div>
-      </div> -->
-
-    </div>
+  
 
   </div>
+  <!-- //////////////First Column/////////// -->
+
+
+
+  <!-- //////////////Second Column/////////// -->
+  <div class="col-sm">
+    <div class="nav nav-pills mb-3 sortable" [sortablejs]="cities" [sortablejsOptions]="options"
+      [sortablejsCloneFunction]="myCloneImplementation">
+
+
+      <ul *ngFor="let city of cities" class="list-group w-100">
+        <!-- <h4>List Of People In U.K. </h4> -->
+        <ul class="list-group">
+          <li class="card" *ngFor="let people of city.people; index as i" class="list-group-item">
+            <div class="card-header">{{i+1}}. {{people.name}} </div>
+          </li>
+        </ul>
+      </ul>
+    </div>
+
+    <div class="nav nav-pills mb-3 sortable" [sortablejs]="countries" [sortablejsOptions]="options"
+      [sortablejsCloneFunction]="myCloneImplementation">
+      <ul *ngFor="let city of countries" class="list-group w-100">
+        <!-- <h4>List Of People In U.K.</h4> -->
+        <ul class="list-group">
+          <li class="card" *ngFor="let people of city.people; index as i" class="list-group-item">
+            <div class="card-header">{{i+1}}. {{people.name}} </div>
+          </li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+  <!-- //////////////Second Column/////////// -->
+
+
+
+  <!-- //////////Third Column/////////// -->
+  <div class="col-sm">
+
+    <div class="nav nav-pills mb-3 sortable" [sortablejs]=" images" [sortablejsOptions]="options"
+      [sortablejsCloneFunction]="myCloneImplementation">
+      <div class="card" style="width: 378px;" *ngFor="let people of images">
+        <img class="card-body" style="width: 378px;" src="{{people}}">
+      </div>
+    </div>
+    <br><br>
+
+
+  </div>
+
+</div>
 </div>
 
 
@@ -122,11 +94,11 @@ Actually everything can be sortable. -->
 
 
 
-  <div>
-    <br>
+<div>
+  <br>
 
 
-    <!-- <div class="nav nav-pills mb-3 " [sortablejs]="Block1" [sortablejsOptions]="options"
+  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="Block1" [sortablejsOptions]="options"
     [sortablejsCloneFunction]="myCloneImplementation">
         <ul>
             <li *ngFor="let block of Block1">
@@ -135,10 +107,10 @@ Actually everything can be sortable. -->
         </ul>
     </div> -->
 
-    <br>
+  <br>
 
-    <br>
-    <!-- <div class="nav nav-pills mb-3 " [sortablejs]="list3" [sortablejsOptions]="options"
+  <br>
+  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="list3" [sortablejsOptions]="options"
     [sortablejsCloneFunction]="myCloneImplementation">
     <div class="nav-item" *ngFor="let city of list3">
       <a class="nav-link active mr-1">{{ city }}</a>
@@ -147,18 +119,18 @@ Actually everything can be sortable. -->
 
   </div> -->
 
-  </div>
+</div>
 
 
 
-  <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- <nav aria-label="breadcrumb" role="navigation">
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- <nav aria-label="breadcrumb" role="navigation">
   <ol class="breadcrumb" [sortablejs]="cities">
     <li class="breadcrumb-item active" *ngFor="let city of cities">{{ city }}</li>
   </ol>
 </nav> -->
 
-  <!-- <h2 class="mt-4 mb-3">The actual model</h2>
+<!-- <h2 class="mt-4 mb-3">The actual model</h2>
 
 <div class="alert alert-dark">
   > {{ cities | json }}
