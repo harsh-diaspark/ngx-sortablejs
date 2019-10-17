@@ -6,11 +6,13 @@
         
       <div class="sortable" [sortablejs]="items" [sortablejsOptions]="options"
         [sortablejsCloneFunction]="myCloneImplementation">
-        <div *ngFor="let item of items" class="w-100">
+        <div *ngFor="let item of items" class="w-100 mh-100">
           <br>
-          <!-- <div> {{people.count}} </div> -->
+          <div  class="card">
+            <h4 class="card-header">'{{item.count}}'</h4>
+          </div>
 
-          <img [src]="item.item" class="w-100">
+          <!-- <img [src]="item.item" class="w-100"> -->
         </div>
       </div>
       <br>
@@ -35,6 +37,9 @@
             <li *ngIf="city.item" class="list-group-item">
                 <div class="w-50"><img [src]= "city.item"> </div>
               </li>
+              <li *ngIf="city.count" class="list-group-item">
+                  <div class="w-50"> {{city.count}}</div>
+                </li>
           </ul>
         </ul>
 
@@ -52,6 +57,9 @@
             <li *ngIf="city.item" class="list-group-item ">
               <div ><img [src]= "city.item"  > </div>
             </li>
+            <li *ngIf="city.count" class="list-group-item">
+                <div class="w-50"> {{city.count}}</div>
+              </li>
           </ul>
         </ul>
       </div>
@@ -74,7 +82,18 @@
         <div *ngFor="let people of images" class="w-100">
           <br><br>
           <!-- {{ images | json }} -->
-          <img class="w-100" [src]="people.item">
+          <div *ngIf="people.item">
+              <img class="w-100" [src]="people.item">
+          </div>
+          
+
+          <div class="list-group" *ngIf="people.count" >
+              <li class="list-group-item">
+                  <div class="w-50"> {{people.count}}</div>
+                </li>
+          </div>
+          
+
         </div>
         <br>
       </div>

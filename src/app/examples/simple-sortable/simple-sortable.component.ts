@@ -12,7 +12,9 @@ export class SimpleSortableComponent {
   image2='/assets/img2.png';
   image3='/assets/pie-chart.png';
   image4='/assets/donut_full.png'
-  count=16;
+  count1="Count:16";
+  count2="Count:32";
+
 
   
   cities = [
@@ -78,8 +80,8 @@ private _countriesBS = new BehaviorSubject(this.countries);
   }
 
   items =[
-        { item: this.image4},
-        { item: this.image3}
+        { count: this.count1},
+        { count: this.count2}
    ]
 
 
