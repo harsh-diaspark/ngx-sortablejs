@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SortablejsOptions } from 'ngx-sortablejs';
-
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-simple-sortable',
   templateUrl: './simple-sortable.component.html',
@@ -9,14 +9,15 @@ import { SortablejsOptions } from 'ngx-sortablejs';
 export class SimpleSortableComponent {
 
   image1= '/assets/img1.png';
-  image2='/assets/img2.png'
+  image2='/assets/img2.png';
+  image3='/assets/pie-chart.png';
+  image4='/assets/donut_full.png'
+  count=16;
 
   
   cities = [
-    {
-     
+    {     
       'people': [
-
         {
           "name": "Douglas  Pace"
         },
@@ -30,14 +31,15 @@ export class SimpleSortableComponent {
           "name": "Mcleod  Mueller"
         }
       ]
-    }
+    },
+
   ];
   images = [
-    this.image1,
-    this.image2
+    {item: this.image1},
+    {item: this.image2}
   ]
 
-  countries = [
+countries = [
  
     {
       'people': [
@@ -57,14 +59,37 @@ export class SimpleSortableComponent {
     }
   ]
 
+private _citiesBS = new BehaviorSubject(this.cities);
+public get citiesBS() {
+  return this._citiesBS;
+}
+public set citiesBS(value) {
+  this._citiesBS = value;
+}
+
+
+private _countriesBS = new BehaviorSubject(this.countries);
+
+  public get countriesBS() {
+    return this._countriesBS;
+  }
+  public set countriesBS(value) {
+    this._countriesBS = value;
+  }
+
   items =[
-      {
-        'count':'Count1'
-      },
-      {
-        'pic':this.image1
-      }
+        { item: this.image4},
+        { item: this.image3}
    ]
+
+
+   clone1Options: SortablejsOptions = {
+    group: {
+      name: 'clone-group',
+      pull: 'clone',
+      put: false,
+    },
+  };
   
   options: SortablejsOptions = {
     group: 'test'
@@ -73,7 +98,5 @@ export class SimpleSortableComponent {
   myCloneImplementation = (city) => {
     return city; // this is what happens if sortablejsCloneFunction is not provided. Add your stuff here
   }
-
   
-
 }

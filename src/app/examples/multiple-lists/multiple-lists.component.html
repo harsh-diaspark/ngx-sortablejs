@@ -17,14 +17,14 @@ This shows how the <em>sortable</em> lists can be connected together. Pay attent
 </p>
 
 <div class="row">
-  <div class="col-sm-3">
-    <ul class="list-group sortable" [sortablejs]="normalList1" [sortablejsOptions]="normalOptions">
+  <div class="col-sm-3 sortable" >
+    <ul class="list-group" [sortablejs]="normalList1" [sortablejsOptions]="normalOptions">
       <li class="list-group-item" *ngFor="let item of normalList1">Element {{ item }}</li>
     </ul>
   </div>
 
-  <div class="col-sm-3">
-    <ul class="list-group sortable" [sortablejs]="normalList2" [sortablejsOptions]="normalOptions">
+  <div class="col-sm-3 sortable">
+    <ul class="list-group " [sortablejs]="normalList2" [sortablejsOptions]="normalOptions">
       <li class="list-group-item" *ngFor="let item of normalList2">Element {{ item }}</li>
     </ul>
   </div>
