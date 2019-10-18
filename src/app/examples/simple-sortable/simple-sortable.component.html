@@ -3,22 +3,30 @@
 
     <!-- //////////////First Column/////////// -->
     <div class="col-sm h-100">
-        
+
       <div class="sortable" [sortablejs]="items" [sortablejsOptions]="options"
         [sortablejsCloneFunction]="myCloneImplementation">
         <div *ngFor="let item of items" class="w-100 mh-100">
-          <br>
-          <div  class="card">
-            <h4 class="card-header">'{{item.count}}'</h4>
+          <br><br>
+          <div class="card" *ngIf = "item.count">
+            <h4 class="card-header">{{item.count}}</h4>
           </div>
 
           <!-- <img [src]="item.item" class="w-100"> -->
+          <ul *ngIf="item.people" class="list-group">
+            <li *ngFor = "let person of item.people; index as i" class="list-group-item">
+              <div>{{i+1}}. {{person.name}}</div>
+            </li>
+          </ul>
+
+          <div *ngIf="item.item" >
+            <img [src]="item.item" class="w-100">
+          </div>
+          
         </div>
       </div>
       <br>
-      <!-- <div class="alert alert-dark">
-        {{ items | json }}
-      </div> -->
+      
     </div>
     <!-- //////////////First Column/////////// -->
 
@@ -35,14 +43,13 @@
               <div class="w-100">{{i+1}}. {{people.name}} </div>
             </li>
             <li *ngIf="city.item" class="list-group-item">
-                <div class="w-50"><img [src]= "city.item"> </div>
-              </li>
-              <li *ngIf="city.count" class="list-group-item">
-                  <div class="w-50"> {{city.count}}</div>
-                </li>
+              <div class="w-50"><img [src]="city.item"> </div>
+            </li>
+            <li *ngIf="city.count" class="list-group-item">
+              <div class="w-50"> {{city.count}}</div>
+            </li>
           </ul>
         </ul>
-
       </div>
 
 
@@ -55,17 +62,17 @@
               <div>{{i+1}}. {{people.name}} </div>
             </li>
             <li *ngIf="city.item" class="list-group-item ">
-              <div ><img [src]= "city.item"  > </div>
+              <div><img [src]="city.item"> </div>
             </li>
             <li *ngIf="city.count" class="list-group-item">
-                <div class="w-50"> {{city.count}}</div>
-              </li>
+              <div class="w-50"> {{city.count}}</div>
+            </li>
           </ul>
         </ul>
       </div>
       <br>
-      
-        <!-- <div class="alert alert-dark">
+
+      <!-- <div class="alert alert-dark">
             {{ countries | json }}
           </div> -->
 
@@ -76,23 +83,28 @@
 
     <!-- //////////Third Column/////////// -->
     <div class="col-sm">
-        
+
       <div class="nav nav-pills mb-3 sortable" [sortablejs]=" images" [sortablejsOptions]="options"
         [sortablejsCloneFunction]="myCloneImplementation2">
-        <div *ngFor="let people of images" class="w-100">
+        <div *ngFor="let pic of images" class="w-100">
           <br><br>
-          <!-- {{ images | json }} -->
-          <div *ngIf="people.item">
-              <img class="w-100" [src]="people.item">
+          <div *ngIf="pic.item">
+            <img class="w-100" [src]="pic.item">
           </div>
-          
 
-          <div class="list-group" *ngIf="people.count" >
-              <li class="list-group-item">
-                  <div class="w-50"> {{people.count}}</div>
-                </li>
+
+          <div class="card mh-100" *ngIf="pic.count">
+            <li class="card-header">
+              <div class="w-50"><b> {{pic.count}} </b></div>
+            </li>
           </div>
-          
+
+          <ul *ngIf = "pic.people" class="list-group">
+            <li class="list-group-item" *ngFor="let person of pic.people">
+              <div>{{person.name}}</div>
+            </li>
+          </ul>
+
 
         </div>
         <br>
@@ -101,7 +113,7 @@
       <!-- <div class="alert alert-dark">
         {{ images | json }}
       </div> -->
-      
+
     </div>
     <!-- //////////Third Column/////////// -->
 
@@ -110,53 +122,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-<div>
-  <br>
-
-
-  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="Block1" [sortablejsOptions]="options"
-    [sortablejsCloneFunction]="myCloneImplementation">
-        <ul>
-            <li *ngFor="let block of Block1">
-                {{ block }} 
-           </li>
-        </ul>
-    </div> -->
-
-  <br>
-
-  <br>
-  <!-- <div class="nav nav-pills mb-3 " [sortablejs]="list3" [sortablejsOptions]="options"
-    [sortablejsCloneFunction]="myCloneImplementation">
-    <div class="nav-item" *ngFor="let city of list3">
-      <a class="nav-link active mr-1">{{ city }}</a>
-
-    </div>
-
-  </div> -->
-
-</div>
-
-
-
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-<!-- <nav aria-label="breadcrumb" role="navigation">
-  <ol class="breadcrumb" [sortablejs]="cities">
-    <li class="breadcrumb-item active" *ngFor="let city of cities">{{ city }}</li>
-  </ol>
-</nav> -->
-
-<!-- <h2 class="mt-4 mb-3">The actual model</h2>
-
-<div class="alert alert-dark">
-  > {{ cities | json }}
-</div> -->
